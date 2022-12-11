@@ -29,8 +29,14 @@
             [(ngModel)]="term"
           >
           <button class="form__button" (click)="showAll()">
-            Show all breeds
+            {{ !openModalWindow ? 'Show' : 'Hide' }} all breeds
           </button>
+          <select *ngIf="openModalWindow" class="breeds-list" #selectList (change)="getBreed(selectList.value)">
+            <option class="breed-item">All</option>
+            <option *ngFor="let breed of breedsList ; let index = index" value={{breed.id}} class="breed-item">
+              {{ breed.name }}
+            </option>
+          </select>
         </div>
       </form>
 

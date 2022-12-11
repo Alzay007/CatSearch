@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { FormControl } from '@angular/forms';
 import { Cat } from './models/cat';
 
 import { CatApiService } from './services/cat.service';
@@ -16,14 +15,13 @@ export class AppComponent {
   count: '';
 
   isRightCount = true;
+  openModalWindow = false;
 
   catList: Cat[] = [];
-  breedList: any[] = [];
+  breedsList: any[] = [];
 
   currentSubscription = false;
   initialNumber = 10;
-
-  breeds = this.breedList.map(breed => breed.breeds[0].name)
 
   constructor(private CatApiService: CatApiService) {
   }
@@ -45,15 +43,27 @@ export class AppComponent {
     }
 
     this.isRightCount = false;
-    window.setTimeout(() => this.isRightCount = true, 2000)
+    window.setTimeout(() => this.isRightCount = true, 3000)
     return;
   }
 
   showAll() {
-    return this.getNewCats(100);
+    return this.openModalWindow = !this.openModalWindow;
+  }
+
+  getBreed(id: string) {
+    console.log('done')
+    console.log(id)
+    this.CatApiService.getBreedByID(id).subscribe((catList) => {
+      this.catList = catList
+    }
+    )
   }
 
   ngOnInit(): void {
     this.getNewCats(this.initialNumber)
+    this.CatApiService.getAllBreeds().subscribe((breedsList) => {
+      this.breedsList = breedsList
+    });
   }
 }

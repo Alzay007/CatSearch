@@ -52,7 +52,7 @@ body {
     padding: 10px;
     font-size: 14px;
     outline:none;
-    background: linear-gradient(to left top, #000, #22132e) fixed;
+    background: linear-gradient(to left top, #000, #22132e);
     border-radius: 10px;
     border: 2px solid rgba(255,255,255,0.2);
     color: rgba(255,255,255,0.8);
@@ -103,6 +103,20 @@ body {
   color: #D8000C;
   background-color: #FFBABA;
   text-align: center;
+}
+
+.breeds-list {
+  display: flex;
+  flex-direction: column;
+
+  padding: 10px;
+  border-radius: 15px;
+
+  background: linear-gradient(144deg,#AF40FF, #5B42F3 50%,#00DDEB);
+}
+
+.breed-item {
+  font-family: 'Poppins', sans-serif;
 }
 
 .cat-list {

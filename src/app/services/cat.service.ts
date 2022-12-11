@@ -18,15 +18,20 @@ export class CatApiService {
     'content-type': 'application/json',
   });
 
-
   getAllCats(x: number): Observable<Cat[]> {
     return this.http.get<Cat[]>(`${this.apiUrl}/images/search?limit=${x}&has_breeds=1`,
       { headers: this.header }
     )
   }
 
+  getAllBreeds(): Observable<any[]> {
+    return this.http.get<any[]>(`${this.apiUrl}/breeds`,
+      { headers: this.header }
+    )
+  }
+
   getBreedByID(id: string): Observable<Cat[]> {
-    return this.http.get<Cat[]>(`${this.apiUrl}/images/search?limit=10&breed_id=${id}`,
+    return this.http.get<Cat[]>(`${this.apiUrl}/images/search?breed_id=${id}`,
       { headers: this.header }
     )
   }
