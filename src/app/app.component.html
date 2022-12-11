@@ -32,7 +32,7 @@
             {{ !openModalWindow ? 'Show' : 'Hide' }} all breeds
           </button>
           <select *ngIf="openModalWindow" class="breeds-list" #selectList (change)="getBreed(selectList.value)">
-            <option class="breed-item">All</option>
+            <option class="breed-item">*Select breed*</option>
             <option *ngFor="let breed of breedsList ; let index = index" value={{breed.id}} class="breed-item">
               {{ breed.name }}
             </option>
