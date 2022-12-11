@@ -2,13 +2,13 @@
     <div class="container">
       <form name="catform" class="form">
         <div class="form__block">
-          <label for="input-1" class="form__label">Filter By </label>
+          <label for="input-1" class="form__label">By quantity</label>
           <input
             id="input-1"
             name="second"
             type="number"
             class="form__input"
-            placeholder="enter count"
+            placeholder="enter num from 1 to 100"
             [(ngModel)]="count"
           >
           <button class="form__button" (click)="getCatsByCount(+count)">
@@ -16,8 +16,10 @@
           </button>
         </div>
 
+        <p *ngIf="!isRightCount" class="error-text"> Please enter correct quantity</p>
+
         <div class="form__block">
-          <label for="input-2" class="form__label">Filter By </label>
+          <label for="input-2" class="form__label">By breed </label>
           <input
             id="input-2"
             name="first"
@@ -31,6 +33,7 @@
           </button>
         </div>
       </form>
+
       <div class="cat-list">
         <app-cat *ngFor="let cat of catList | filterBreeds:term ; let index = index" [cat]="cat"></app-cat>
         <mat-spinner

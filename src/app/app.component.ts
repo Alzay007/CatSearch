@@ -15,9 +15,15 @@ export class AppComponent {
   term = ''
   count: '';
 
+  isRightCount = true;
+
   catList: Cat[] = [];
+  breedList: any[] = [];
+
   currentSubscription = false;
   initialNumber = 10;
+
+  breeds = this.breedList.map(breed => breed.breeds[0].name)
 
   constructor(private CatApiService: CatApiService) {
   }
@@ -31,11 +37,15 @@ export class AppComponent {
   }
 
   getCatsByCount(count: number) {
-    if (+this.count > 0) {
+    if (+this.count > 0 && +this.count <= 100) {
       this.count = '';
+      this.isRightCount = true;
+
       return this.getNewCats(count)
     }
 
+    this.isRightCount = false;
+    window.setTimeout(() => this.isRightCount = true, 2000)
     return;
   }
 

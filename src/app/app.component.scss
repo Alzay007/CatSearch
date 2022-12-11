@@ -24,7 +24,7 @@ body {
   border: 2px solid rgb(67, 208, 20);
   padding: 40px 25px;
 
-  gap: 40px;
+  gap: 30px;
   border-radius: 10px;
 
   &__block {
@@ -40,6 +40,8 @@ body {
     font-size: 1.2rem;
     color: $colorWhite;
 
+    width: 105px;
+
     transition: all 0.3s;
     transform: translateY(0rem);
     cursor: pointer;
@@ -48,7 +50,7 @@ body {
   &__input {
     width: 200px;
     padding: 10px;
-    font-size: 18px;
+    font-size: 14px;
     outline:none;
     background: linear-gradient(to left top, #000, #22132e) fixed;
     border-radius: 10px;
@@ -92,6 +94,15 @@ body {
       background: linear-gradient(144deg,#AF40FF, #5B42F3 50%,#00DDEB);
     }
   }
+}
+
+.error-text {
+  border: 1px solid;
+	margin: 10px 0px;
+	padding: 15px 10px 15px 50px;
+  color: #D8000C;
+  background-color: #FFBABA;
+  text-align: center;
 }
 
 .cat-list {
