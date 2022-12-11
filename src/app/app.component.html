@@ -1,0 +1,42 @@
+  <body>
+    <div class="container">
+      <form name="catform" class="form">
+        <div class="form__block">
+          <label for="input-1" class="form__label">Filter By </label>
+          <input
+            id="input-1"
+            name="second"
+            type="number"
+            class="form__input"
+            placeholder="enter count"
+            [(ngModel)]="count"
+          >
+          <button class="form__button" (click)="getCatsByCount(+count)">
+            Search
+          </button>
+        </div>
+
+        <div class="form__block">
+          <label for="input-2" class="form__label">Filter By </label>
+          <input
+            id="input-2"
+            name="first"
+            type="text"
+            class="form__input"
+            placeholder="enter breed"
+            [(ngModel)]="term"
+          >
+          <button class="form__button" (click)="showAll()">
+            Show all breeds
+          </button>
+        </div>
+      </form>
+      <div class="cat-list">
+        <app-cat *ngFor="let cat of catList | filterBreeds:term ; let index = index" [cat]="cat"></app-cat>
+        <mat-spinner
+          *ngIf="currentSubscription"
+          id="infiniteScrollSpinner"
+        ></mat-spinner>
+      </div>
+    </div>
+  </body>

@@ -25,7 +25,7 @@ module.exports = function (config) {
       suppressAll: true // removes the duplicated traces
     },
     coverageReporter: {
-      dir: require('path').join(__dirname, './coverage/cat-search-app'),
+      dir: require('path').join(__dirname, './coverage/catfilter'),
       subdir: '.',
       reporters: [
         { type: 'html' },

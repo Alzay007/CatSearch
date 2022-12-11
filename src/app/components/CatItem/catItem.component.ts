@@ -1,7 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { Cat } from '../../models/cat';
 
-
 @Component({
   selector: 'app-cat',
   templateUrl: './catItem.component.html',
@@ -10,5 +9,4 @@ import { Cat } from '../../models/cat';
 
 export class CatItemComponent {
   @Input() cat: Cat;
-
 }

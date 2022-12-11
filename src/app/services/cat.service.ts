@@ -19,14 +19,14 @@ export class CatApiService {
   });
 
 
-  getAllCats(): Observable<Cat[]> {
-    return this.http.get<Cat[]>(`${this.apiUrl}/images/search?limit=50&has_breeds=1`,
+  getAllCats(x: number): Observable<Cat[]> {
+    return this.http.get<Cat[]>(`${this.apiUrl}/images/search?limit=${x}&has_breeds=1`,
       { headers: this.header }
     )
   }
 
   getBreedByID(id: string): Observable<Cat[]> {
-    return this.http.get<Cat[]>(`${this.apiUrl}/images/search?limit=50&breed_id=${id}`,
+    return this.http.get<Cat[]>(`${this.apiUrl}/images/search?limit=10&breed_id=${id}`,
       { headers: this.header }
     )
   }

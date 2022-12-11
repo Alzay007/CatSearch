@@ -3,16 +3,19 @@ import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner'
 import { AppComponent } from './app.component';
 import { CatItemComponent } from "./components/CatItem/catItem.component";
-import { FilterField } from './components/FilterField/filterField.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { FilterBreedsPipe } from './pipes/filter-breeds.pipe';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
     AppComponent,
     CatItemComponent,
-    FilterField,
+    FilterBreedsPipe,
   ],
   providers: [],
   bootstrap: [AppComponent],
@@ -20,7 +23,10 @@ import { ReactiveFormsModule } from '@angular/forms';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    BrowserAnimationsModule,
+    MatProgressSpinnerModule,
+    FormsModule
   ]
 })
 export class AppModule { }

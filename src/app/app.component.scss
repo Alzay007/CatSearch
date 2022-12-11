@@ -1,0 +1,105 @@
+@import '../styles/reset';
+@import '../styles/normalize';
+@import '../styles/vars';
+
+body {
+  min-height:100vh;
+  background: $bobyBackgroundColor;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  padding: 60px 0;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+
+  background: hsla(50, 33%, 25%, .75);
+  border: 2px solid rgb(67, 208, 20);
+  padding: 40px 25px;
+
+  gap: 40px;
+  border-radius: 10px;
+
+  &__block {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    gap: 50px;
+  }
+
+  &__label {
+    font-family: 'Roboto', sans-serif;
+    font-size: 1.2rem;
+    color: $colorWhite;
+
+    transition: all 0.3s;
+    transform: translateY(0rem);
+    cursor: pointer;
+  }
+
+  &__input {
+    width: 200px;
+    padding: 10px;
+    font-size: 18px;
+    outline:none;
+    background: linear-gradient(to left top, #000, #22132e) fixed;
+    border-radius: 10px;
+    border: 2px solid rgba(255,255,255,0.2);
+    color: rgba(255,255,255,0.8);
+    text-align: center;
+    transition: all 0.5s;
+
+    &:hover {
+      border: 2px solid rgba(255,255,255,0.5);
+    }
+
+    &:focus {
+      border: 2px solid rgba(255,255,255,0.5);
+      background: linear-gradient(to left top, #000, #4e2d69) fixed;
+    }
+  }
+
+  &__button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background-color: rgb(5, 6, 45);;
+    border: 0;
+    border-radius: 8px;
+
+    font-family: 'Roboto', sans-serif;
+    font-size: 15;
+    color: $colorWhite;
+
+    line-height: 1em;
+    height: 45px;
+    width: 130px;
+    padding: 3px;
+    touch-action: manipulation;
+    white-space: nowrap;
+    cursor: pointer;
+
+    &:hover {
+      background: linear-gradient(144deg,#AF40FF, #5B42F3 50%,#00DDEB);
+    }
+  }
+}
+
+.cat-list {
+  display: flex;
+  flex-wrap: wrap;
+  flex-shrink: 0;
+
+  max-width: 1024px;
+  padding: 50px 14px;
+  gap: 40px
+}
