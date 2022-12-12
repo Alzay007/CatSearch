@@ -1,5 +1,13 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef, ViewChild } from '@angular/core';
+import { select, Store } from '@ngrx/store';
+import { Observable } from 'rxjs';
 import { Cat } from './models/cat';
+import { errorCorrectAction, errorIncorrectAction } from './reducers/error/error.actions';
+import { errorState } from './reducers/error/error.reducer';
+import { selectError } from './reducers/error/error.selector';
+import { loadActiveAction, loadFinishAction } from './reducers/loader/loading.actions';
+import { loadingState } from './reducers/loader/loading.reducer';
+import { selectLoader } from './reducers/loader/loading.selector';
 
 import { catApiService } from './services/cat.service';
 
@@ -9,41 +17,42 @@ import { catApiService } from './services/cat.service';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'catSearch-app';
+  @ViewChild('inputField') redel: ElementRef;
 
-  term = ''
-  count: '';
+  public isLoadingData$: Observable<boolean> = this.loading$.pipe(select(selectLoader));
+  public isCorrectCount$: Observable<boolean> = this.error$.pipe(select(selectError));
 
-  isRightCount = true;
+  term = '';
+  count: number;
   isShowSelectList = false;
 
   catList: Cat[] = [];
   breedsList: any[] = [];
 
-  isLoadningData = false;
-  initialNumber = 10;
-
-  constructor(private catApiService: catApiService) {
+  constructor(
+    private catApiService: catApiService,
+    private loading$: Store<loadingState>,
+    private error$: Store<errorState>) {
   }
 
   getNewCats(x: number) {
-    this.isLoadningData = true;
+    this.loading$.dispatch(new loadActiveAction())
     this.catApiService.getAllCats(x).subscribe((catList) => {
       this.catList = catList;
-      this.isLoadningData = false
+      this.loading$.dispatch(new loadFinishAction())
     });
   }
 
   getCatsByCount(count: number) {
-    if (+this.count > 0 && +this.count <= 100) {
-      this.count = '';
-      this.isRightCount = true;
+    if (this.count > 0 && this.count <= 100) {
+      this.error$.dispatch(new errorCorrectAction())
+      this.redel.nativeElement.value = ''
 
       return this.getNewCats(count)
     }
 
-    this.isRightCount = false;
-    window.setTimeout(() => this.isRightCount = true, 3000)
+    this.error$.dispatch(new errorIncorrectAction())
+    window.setTimeout(() => this.error$.dispatch(new errorCorrectAction()), 2500)
     return;
   }
 
@@ -58,7 +67,7 @@ export class AppComponent {
   }
 
   ngOnInit(): void {
-    this.getNewCats(this.initialNumber)
+    this.getNewCats(10)
     this.catApiService.getAllBreeds().subscribe((breedsList) => {
       this.breedsList = breedsList
     });

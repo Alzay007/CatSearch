@@ -6,17 +6,18 @@
           <input
             id="input-1"
             name="second"
+            #inputField
             type="number"
             class="form__input"
             placeholder="enter num from 1 to 100"
             [(ngModel)]="count"
           >
-          <button class="form__button" (click)="getCatsByCount(+count)">
+          <button class="form__button" (click)="getCatsByCount(count)">
             Search
           </button>
         </div>
 
-        <p *ngIf="!isRightCount" class="error-text"> Please enter correct quantity</p>
+        <p *ngIf="isCorrectCount$ | async" class="error-text"> Please enter correct quantity</p>
 
         <div class="form__block">
           <label for="input-2" class="form__label">By breed </label>
@@ -48,7 +49,7 @@
       <div class="cat-list">
         <app-cat *ngFor="let cat of catList | filterBreeds:term ; let index = index" [cat]="cat"></app-cat>
         <mat-spinner
-          *ngIf="isLoadningData"
+          *ngIf="isLoadingData$ | async"
           id="infiniteScrollSpinner"
         ></mat-spinner>
       </div>
