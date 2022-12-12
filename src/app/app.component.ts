@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Cat } from './models/cat';
 
-import { CatApiService } from './services/cat.service';
+import { catApiService } from './services/cat.service';
 
 @Component({
   selector: 'app-root',
@@ -15,22 +15,22 @@ export class AppComponent {
   count: '';
 
   isRightCount = true;
-  openModalWindow = false;
+  isShowSelectList = false;
 
   catList: Cat[] = [];
   breedsList: any[] = [];
 
-  currentSubscription = false;
+  isLoadningData = false;
   initialNumber = 10;
 
-  constructor(private CatApiService: CatApiService) {
+  constructor(private catApiService: catApiService) {
   }
 
   getNewCats(x: number) {
-    this.currentSubscription = true;
-    this.CatApiService.getAllCats(x).subscribe((catList) => {
+    this.isLoadningData = true;
+    this.catApiService.getAllCats(x).subscribe((catList) => {
       this.catList = catList;
-      this.currentSubscription = false
+      this.isLoadningData = false
     });
   }
 
@@ -48,21 +48,18 @@ export class AppComponent {
   }
 
   showAll() {
-    return this.openModalWindow = !this.openModalWindow;
+    return this.isShowSelectList = !this.isShowSelectList;
   }
 
   getBreed(id: string) {
-    console.log('done')
-    console.log(id)
-    this.CatApiService.getBreedByID(id).subscribe((catList) => {
+    this.catApiService.getBreedByID(id).subscribe((catList) => {
       this.catList = catList
-    }
-    )
+    })
   }
 
   ngOnInit(): void {
     this.getNewCats(this.initialNumber)
-    this.CatApiService.getAllBreeds().subscribe((breedsList) => {
+    this.catApiService.getAllBreeds().subscribe((breedsList) => {
       this.breedsList = breedsList
     });
   }

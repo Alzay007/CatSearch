@@ -1,6 +1,6 @@
   <body>
     <div class="container">
-      <form name="catform" class="form">
+      <form class="form">
         <div class="form__block">
           <label for="input-1" class="form__label">By quantity</label>
           <input
@@ -29,9 +29,14 @@
             [(ngModel)]="term"
           >
           <button class="form__button" (click)="showAll()">
-            {{ !openModalWindow ? 'Show' : 'Hide' }} all breeds
+            {{ !isShowSelectList ? 'Show' : 'Hide' }} all breeds
           </button>
-          <select *ngIf="openModalWindow" class="breeds-list" #selectList (change)="getBreed(selectList.value)">
+          <select
+            *ngIf="isShowSelectList"
+            class="breeds-list"
+            #selectList
+            (change)="getBreed(selectList.value)"
+          >
             <option class="breed-item">*Select breed*</option>
             <option *ngFor="let breed of breedsList ; let index = index" value={{breed.id}} class="breed-item">
               {{ breed.name }}
@@ -43,7 +48,7 @@
       <div class="cat-list">
         <app-cat *ngFor="let cat of catList | filterBreeds:term ; let index = index" [cat]="cat"></app-cat>
         <mat-spinner
-          *ngIf="currentSubscription"
+          *ngIf="isLoadningData"
           id="infiniteScrollSpinner"
         ></mat-spinner>
       </div>

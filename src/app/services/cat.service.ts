@@ -6,7 +6,7 @@ import { Cat } from '../models/cat'
 @Injectable({
   providedIn: 'root',
 })
-export class CatApiService {
+export class catApiService {
   private apiUrl: string = 'https://api.thecatapi.com/v1'
 
   constructor(

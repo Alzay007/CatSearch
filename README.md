@@ -1,27 +1,35 @@
-# Catfilter
+# CatSearch
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.2.9.
+This project was generated with [Angular CLI] version 14.2.9.
 
-## Development server
+[Demo](https://Alzay007.github.io/CatSearch/)
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+## Technologies used:
+- Angular
+- Angular Material
+- RxJS
+- TypeScript
+- SCSS
+- Syntax ES6!
+- REST API
 
-## Code scaffolding
+The project is connected to the server and hosted on the Internet using GitHub Pages
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## How to set it up for work:
 
-## Build
+## 1. Clone this project:
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+### `git@github.com:Alzay007/CatSearch.git`
 
-## Running unit tests
+## 2. Install the packages with the command:
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+### `npm i`
 
-## Running end-to-end tests
+## 3. Run command to start project:
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+### `npm start`
 
-## Further help
+Runs the app in the development mode.\
+Open [http://localhost:4200](http://localhost:4200) to view it in the browser.
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+The page will reload if you make edits.
