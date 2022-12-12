@@ -8,6 +8,7 @@ This project was generated with [Angular CLI] version 14.2.9.
 - Angular
 - Angular Material
 - RxJS
+- NgRx
 - TypeScript
 - SCSS
 - Syntax ES6!
